@@ -1,6 +1,6 @@
 # ###THIS IS TEMPLATE PROJECT FOR SECRET ROTATION FUNCTIONS. FOLLOW [THIS](https://github.com/Azure/KeyVault-Secrets-Rotation-Template-PowerShell/blob/main/Project-Template-Instructions.md) STEPS TO CREATE NEW SECRETS ROTATION FUNCTION PROJECT REPOSITORY###.
 
-# KeyVault-Secrets-Rotation-AADApp-ClientSecret-PowerShell
+# KeyVault-Secrets-Rotation-AADApp-PowerShell
 
 Functions regenerate individual key (alternating between two keys) in AAD App client secret and add regenerated client secret to Key Vault as new version of the same secret.
 
@@ -40,8 +40,8 @@ Functions are using Function App identity to access Key Vault and existing secre
 
 ARM templates available:
 
-* [Secrets rotation Azure Function and configuration deployment template](https://github.com/Azure/KeyVault-Secrets-Rotation-AADApp-ClientSecret-PowerShell/blob/main/ARM-Templates/Readme.md) - it creates and deploys function app and function code, creates necessary permissions, Key Vault event subscription for Near Expiry Event for individual secret (secret name can be provided as parameter)
-* [Add event subscription to existing Azure Function deployment template](https://github.com/Azure/KeyVault-Secrets-Rotation-AADApp-ClientSecret-PowerShell/blob/main/ARM-Templates/Readme.md) - function can be used for multiple services for rotation. This template creates new event subscription for secret and necessary permissions to existing function
+* [Secrets rotation Azure Function and configuration deployment template](https://github.com/Azure/KeyVault-Secrets-Rotation-AADApp-PowerShell/blob/main/ARM-Templates/Readme.md) - it creates and deploys function app and function code, creates necessary permissions, Key Vault event subscription for Near Expiry Event for individual secret (secret name can be provided as parameter)
+* [Add event subscription to existing Azure Function deployment template](https://github.com/Azure/KeyVault-Secrets-Rotation-AADApp-PowerShell/blob/main/ARM-Templates/Readme.md) - function can be used for multiple services for rotation. This template creates new event subscription for secret and necessary permissions to existing function
 
 Steps to add Graph API permissions to Azure Function:
 

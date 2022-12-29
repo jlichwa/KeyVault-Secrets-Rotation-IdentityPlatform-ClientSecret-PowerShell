@@ -1,8 +1,8 @@
-## Key Vault Rotation Function for AADAppClientSecret Changelog
+## Key Vault Rotation Function for AAD App Client Secret Changelog
 
 <a name="Keyvault-Rotation-AADAppClientSecret-PowerShell"></a>
 
-# Keyvault-Rotation-AADApp-ClientSecret-PowerShell (2020-12-22)
+# Keyvault-Secrets-Rotation-AADApp-PowerShell (2022-12-30)
 
 *Features*
 
