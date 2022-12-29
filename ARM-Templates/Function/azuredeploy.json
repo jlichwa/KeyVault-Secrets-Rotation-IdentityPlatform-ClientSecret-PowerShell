@@ -50,14 +50,14 @@
         },
         "clientSecretId": {
             "defaultValue": "",
-            "type": "String",
+            "type": "SecureString",
             "metadata": {
                 "description": "The id of the client secret to store."
             }
         },
         "clientSecretValue": {
             "defaultValue": "",
-            "type": "String",
+            "type": "SecureString",
             "metadata": {
                 "description": "The value of the client secret to store."
             }
