@@ -2,18 +2,11 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "[ServiceType]RG": {
-            "defaultValue": "[resourceGroup().name]",
-            "type": "String",
-            "metadata": {
-                "description": "The name of the resource group where [ServiceType] with keys to rotate has deployed."
-            }
-        },
-        "[ServiceType]Name": {
+        "aadAppId": {
             "defaultValue": "",
             "type": "String",
             "metadata": {
-                "description": "The name of the [ServiceType] with keys to rotate."
+                "description": "Object Id of the AAD App with client secrets to rotate."
             }
         },
         "keyVaultRG": {
