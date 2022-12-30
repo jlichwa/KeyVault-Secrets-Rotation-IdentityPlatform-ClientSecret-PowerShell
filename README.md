@@ -1,5 +1,3 @@
-# ###THIS IS TEMPLATE PROJECT FOR SECRET ROTATION FUNCTIONS. FOLLOW [THIS](https://github.com/Azure/KeyVault-Secrets-Rotation-Template-PowerShell/blob/main/Project-Template-Instructions.md) STEPS TO CREATE NEW SECRETS ROTATION FUNCTION PROJECT REPOSITORY###.
-
 # KeyVault-Secrets-Rotation-AADApp-PowerShell
 
 Functions regenerate individual key (alternating between two keys) in AAD App client secret and add regenerated client secret to Key Vault as new version of the same secret.
