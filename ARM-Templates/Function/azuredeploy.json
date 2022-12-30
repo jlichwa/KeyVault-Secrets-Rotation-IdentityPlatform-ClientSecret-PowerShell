@@ -2,7 +2,7 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "aadAppId": {
+        "aadAppObjectId": {
             "defaultValue": "",
             "type": "String",
             "metadata": {
@@ -89,7 +89,7 @@
         "eventSubscriptionName": "[concat(parameters('functionAppName'),'-',parameters('secretName'))]",
         "appServiceSKU":"[if(equals(parameters('appServicePlanType'),'Consumption Plan'),'Y1','P1V2')]",
         "repoURL": "https://github.com/jlichwa/KeyVault-Secrets-Rotation-IdentityPlatform-ClientSecret-PowerShell.git",
-         "ProviderResourceId":"[parameters('aadAppId')]"
+         "ProviderResourceId":"[parameters('aadAppObjectId')]"
     },
     "resources": [
         {
