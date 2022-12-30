@@ -12,7 +12,7 @@ function RegenerateCredential($credentialId, $providerAddress, $vaultName, $vali
         EndDateTime = $endDate
         DisplayName = "Managed by Key Vault $vaultName"
     }
-    $clientSecret = New-AzADAppCredential -PasswordCredentials $passwordCredentials -ObjectId $providerAddress
+    $clientSecret = New-AzADAppCredential  -PasswordCredentials $passwordCredentials -ObjectId $providerAddress
     
     return $clientSecret
 }
