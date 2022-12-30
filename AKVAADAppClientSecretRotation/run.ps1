@@ -42,7 +42,7 @@ function RoatateSecret($keyVaultName,$secretName,$secretVersion){
 
     #Regenerate Credential
     $newCredentialValue = (RegenerateCredential "" $providerAddress $keyVAultName $validityPeriodDays)
-    Write-Host "Credential regenerated. Credential Id: $newCredentialValue.KeyId Resource Id: $providerAddress"
+    Write-Host "Credential regenerated. Credential Id: $($newCredentialValue.KeyId) Resource Id: $providerAddress"
 
     #Add new credential to Key Vault
     $newSecretVersionTags = @{}
@@ -51,7 +51,7 @@ function RoatateSecret($keyVaultName,$secretName,$secretVersion){
     $newSecretVersionTags.ProviderAddress = $providerAddress
 
     $expiryDate = (Get-Date).AddDays([int]$validityPeriodDays).ToUniversalTime()
-    $secretvalue = ConvertTo-SecureString "$newCredentialValue.SecretText" -AsPlainText -Force
+    $secretvalue = ConvertTo-SecureString "$($newCredentialValue.SecretText)" -AsPlainText -Force
     AddSecretToKeyVault $keyVAultName $secretName $secretvalue $expiryDate $newSecretVersionTags
 
     Write-Host "New credential added to Key Vault. Secret Name: $secretName"
