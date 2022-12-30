@@ -2,13 +2,6 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "aadAppObjectId": {
-            "defaultValue": "",
-            "type": "String",
-            "metadata": {
-                "description": "Object Id of the AAD App with client secrets to rotate."
-            }
-        },
         "keyVaultRG": {
             "defaultValue": "[resourceGroup().name]",
             "type": "String",
@@ -48,6 +41,20 @@
                 "description": "The name of the secret where AAD App client secrets are stored."
             }
         },
+        "deploySecretWithClientSecretToKeyVault": {
+            "defaultValue": "true",
+            "type": "bool",
+            "metadata": {
+                "description": "Add client secret to key vault. New secret is created with client secret as value"
+            }
+        },
+        "aadAppObjectId": {
+            "defaultValue": "",
+            "type": "String",
+            "metadata": {
+                "description": "Object Id of the AAD App with client secrets to rotate."
+            }
+        },
         "clientSecretId": {
             "defaultValue": "",
             "type": "SecureString",
@@ -62,14 +69,8 @@
                 "description": "The value of the client secret to store."
             }
         },
-        "deploySecretWithClientSecretToKeyVault": {
-            "defaultValue": "true",
-            "type": "bool",
-            "metadata": {
-                "description": "Add client secret to key vault. New secret is created with client secret as value"
-            }
-        },
         "secretExpirationDateUnixTime": {
+            "defaultValue": 0,
             "type": "int",
             "metadata": {
                 "description": "Expiry date in seconds since 1970-01-01T00:00:00Z."
@@ -118,7 +119,7 @@
         },
         {
             "type": "Microsoft.Web/sites",
-            "apiVersion": "2018-11-01",
+            "apiVersion": "2021-03-01",
             "name": "[parameters('functionAppName')]",
             "location": "[resourceGroup().location]",
             "dependsOn": [
@@ -140,7 +141,7 @@
                         },
                         {
                             "name": "FUNCTIONS_EXTENSION_VERSION",
-                            "value": "~3"
+                            "value": "~4"
                         },
                         {
                             "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -155,15 +156,13 @@
                             "value": "[toLower(parameters('functionAppName'))]"
                         },
                         {
-                            "name": "WEBSITE_NODE_DEFAULT_VERSION",
-                            "value": "~10"
-                        },
-                        {
                             "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
                             "value": "[reference(resourceId('microsoft.insights/components', parameters('functionAppName')), '2018-05-01-preview').InstrumentationKey]"
                         }
-                    ]
-                }
+                    ],
+                    "minTlsVersion": "1.2"
+                },
+                "httpsOnly": true
             },
             "resources": [
                 {
